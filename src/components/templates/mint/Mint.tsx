@@ -1,5 +1,22 @@
-import { CheckCircleIcon, SettingsIcon} from '@chakra-ui/icons';
-import { Heading, VStack, List, ListIcon, ListItem, Stack, Button } from '@chakra-ui/react';
+/* eslint @typescript-eslint/no-var-requires: "off" */
+/* eslint-disable complexity */
+/* eslint @typescript-eslint/no-explicit-any: "off" */
+/* eslint-disable arrow-spacing */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable arrow-parens */
+/* eslint-disable arrow-spacing */
+/* eslint-disable prefer-const */
+/* eslint-disable prefer-template */
+/* eslint-disable array-callback-return */
+
+/* eslint-disable no-alert */
+/* eslint @typescript-eslint/no-unused-vars: "off" */
+/* eslint @typescript-eslint/no-unused-vars: "off" */
+
+/* eslint-disable no-loop-func */
+/* eslint-disable no-undef */
+/* eslint-disable no-inline-comments */
+import { Heading, VStack, List,  ListItem, Stack, Button } from '@chakra-ui/react';
 import React from 'react';
 import { Input,Text } from '@chakra-ui/react';
 
@@ -13,7 +30,7 @@ const Mint = () => {
   const contractProcessor = useWeb3ExecuteFunction();
   
   const formatPrices = (list:any) => {
-    let result = list.map((x:any) => String(x * ("1e" + 18)));
+    let result = list.map((x:any) => String(Moralis.Units.ETH(x)));
     return result;
 }
   const onCreateMarketItemBatch = async() => {

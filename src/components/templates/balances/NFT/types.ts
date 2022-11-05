@@ -1,5 +1,4 @@
 import { EvmNftContractType } from '@moralisweb3/evm-utils';
-import { MoralisDataObjectValue } from '@moralisweb3/core';
 
 export type TNFTBalance = {
   tokenAddress: string;
@@ -12,7 +11,7 @@ export type TNFTBalance = {
   contractType: EvmNftContractType;
   tokenUri?: string | undefined;
   tokenHash?: string | undefined;
-  metadata: MoralisDataObjectValue;
+  metadata: any;
   name?: string | undefined;
   symbol?: string | undefined;
   lastMetadataSync?: Date | undefined;

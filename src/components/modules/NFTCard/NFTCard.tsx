@@ -1,12 +1,27 @@
+/* eslint @typescript-eslint/no-var-requires: "off" */
+/* eslint-disable complexity */
+/* eslint @typescript-eslint/no-explicit-any: "off" */
+/* eslint-disable arrow-spacing */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable arrow-parens */
+/* eslint-disable arrow-spacing */
+/* eslint-disable prefer-const */
+/* eslint-disable array-callback-return */
+
+/* eslint-disable no-alert */
+/* eslint-disable no-undef */
+/* eslint @typescript-eslint/no-unused-vars: "off" */
+/* eslint @typescript-eslint/no-unused-vars: "off" */
+
+/* eslint-disable no-loop-func */
+/* eslint-disable no-inline-comments */
 import { Box, HStack, Image, SimpleGrid, useColorModeValue,Button } from '@chakra-ui/react';
 import { Eth } from '@web3uikit/icons';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import { resolveIPFS } from 'utils/resolveIPFS';
 import { INFTCard } from './types';
-import {useWeb3ExecuteFunction, useMoralis, useWeb3Contract} from 'react-moralis';
-import { useAccount, useContractWrite, useContractRead } from 'wagmi';
+import {useWeb3ExecuteFunction, useMoralis} from 'react-moralis';
 
-import { ethers } from "ethers";
 const NFTCard: FC<INFTCard> = ({ amount, tokenId,price,contractType, name, symbol, metadata }) => {
   const bgColor = useColorModeValue('none', 'gray.700');
   const borderColor = useColorModeValue('gray.200', 'gray.700');
@@ -14,38 +29,30 @@ const NFTCard: FC<INFTCard> = ({ amount, tokenId,price,contractType, name, symbo
   const contractProcessor = useWeb3ExecuteFunction();
   const { Moralis, isWeb3Enabled ,enableWeb3} = useMoralis();
   
-  const { data, error, runContractFunction, isFetching, isLoading } =
-  useWeb3Contract({
-    abi: nftAbi,
-    contractAddress: "0xE2e783a17609C7BFb8a8e4851BEbE66F0fFDe0ee",
-    functionName: "fetchItem",
-    params: {
-      _tokenId: tokenId,
-    },
-  });
 
 
   useEffect(()=>{
     async function init(){  
       await Moralis.start({ appId: "3YV6ajrewjUqUjio0heFVEROSw6nrxqnbq4ABhRu",serverUrl:"https://mifgyepwzbyo.usemoralis.com:2053/server"});
-    
-      const options = {
-      address: "0xE2e783a17609C7BFb8a8e4851BEbE66F0fFDe0ee",
-      function_name: "fetchItem",
-      abi: nftAbi,
-      params: { _tokenId: tokenId },
-    };
-    const allowance = await Moralis.Web3API.native.runContractFunction(options);
-   
-     console.log(allowance)
+   console.log(tokenId)
+      let options = {
+        address: "0xE2e783a17609C7BFb8a8e4851BEbE66F0fFDe0ee",
+        function_name: "fetchItem",
+        abi: nftAbi,
+        params: {
+            _tokenId: tokenId
+        },
+    };  
+     let allowance = await Moralis.Web3API.native.runContractFunction(
+      options
+  );
+  console.log(allowance);
     }
 
       init()
-  },[data])
+  },[])
 
   const buyNFT = async () => {
-    let res= await runContractFunction()
-    console.log(res)
     console.log(tokenId, 'tokenId');
     console.log(price, 'price');
     const itemId = tokenId;

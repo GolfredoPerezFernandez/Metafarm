@@ -5,7 +5,6 @@ import apiPost from 'utils/apiPost';
 import { Button, Text, HStack, Avatar, useToast } from '@chakra-ui/react';
 import { getEllipsisTxt } from 'utils/format';
 import { useRouter } from 'next/router'
-import { useMoralis } from 'react-moralis';
 
 const ConnectButton = () => {
   const { connectAsync } = useConnect({ connector: new InjectedConnector() });
@@ -16,7 +15,6 @@ const ConnectButton = () => {
   const { data } = useSession();
   const router = useRouter()
 
-  const {  authenticate } = useMoralis();
 
   const handleAuth = async () => {
     if (isConnected) {
@@ -47,9 +45,6 @@ const ConnectButton = () => {
     signOut({ callbackUrl: '/' });
   };
 
-  const handleExplorer = async () => { 
-    router.push('/explorer')
-  };
   const handleMint = async () => {
     router.push('/mint' )
 
