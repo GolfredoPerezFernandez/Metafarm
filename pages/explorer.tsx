@@ -23,20 +23,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   const balances = await Moralis.EvmApi.account.getNFTs({
-    address: "0xE2e783a17609C7BFb8a8e4851BEbE66F0fFDe0ee",
+    address: '0x0FD2F04B0956487DF679A91480b0666b7F90FbB3',
     chain: process.env.APP_CHAIN_ID,
   });
-  
 
   if (!balances) {
     return { props: { error: 'Error' } };
   }
   return {
     props: {
-      balances: JSON.parse(JSON.stringify(balances.result)),
+      balances: [JSON.parse(JSON.stringify(balances.result))],
+      isMarket: true,
     },
   };
 };
 
 export default ExplorerPage;
-

@@ -1,3 +1,5 @@
+/* eslint @typescript-eslint/no-unused-vars: "off" */
+
 import { Box, Grid, Heading } from '@chakra-ui/react';
 import { NFTCard } from 'components/modules';
 import { FC, useEffect } from 'react';
@@ -14,7 +16,7 @@ const Explorer: FC<INFTBalances> = ({ balances, isMarket }) => {
       {balances?.length ? (
         <Grid templateColumns="repeat(auto-fit, minmax(280px, 1fr))" gap={6}>
           {balances.map((balance, key) => (
-            <NFTCard isMarket description="" {...balance} key={key} />
+            <NFTCard {...balance} key={key} />
           ))}
         </Grid>
       ) : (

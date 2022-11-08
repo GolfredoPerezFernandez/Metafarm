@@ -3,6 +3,7 @@ import { EvmNftContractType } from '@moralisweb3/evm-utils';
 export type TNFTBalance = {
   tokenAddress: string;
   chain: string | number;
+  isMarket: boolean;
   price: string | undefined;
   ownerOf: string | undefined;
   blockNumberMinted: string | undefined;
@@ -21,4 +22,5 @@ export type TNFTBalance = {
 
 export interface INFTBalances {
   balances?: TNFTBalance[];
+  isMarket: boolean;
 }

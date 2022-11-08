@@ -13,7 +13,6 @@ const client = createClient({
   webSocketProvider,
   autoConnect: true,
 });
-
 const config = {
   initialColorMode: 'dark',
   useSystemColorMode: false,
@@ -23,16 +22,15 @@ const theme = extendTheme({ config });
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <ChakraProvider resetCSS theme={theme}> 
-    
-      <WagmiConfig client={client}> 
-      
-         <MoralisProvider appId={"3YV6ajrewjUqUjio0heFVEROSw6nrxqnbq4ABhRu"} serverUrl={"https://mifgyepwzbyo.usemoralis.com:2053/server"}>
-    
-        <SessionProvider session={pageProps.session} refetchInterval={0}>
-          <Component {...pageProps} />
-
-        </SessionProvider>  
+    <ChakraProvider resetCSS theme={theme}>
+      <WagmiConfig client={client}>
+        <MoralisProvider
+          appId={'5BMwmoaZo1TQ9gfcEA1ZLLlYYcsCtHOU0Os28u0H'}
+          serverUrl={'https://avjgczsfqac0.usemoralis.com:2053/server'}
+        >
+          <SessionProvider session={pageProps.session} refetchInterval={0}>
+            <Component {...pageProps} />
+          </SessionProvider>
         </MoralisProvider>
       </WagmiConfig>
     </ChakraProvider>

@@ -9,8 +9,8 @@ export type TNFTBalance = {
   blockNumberMinted: string | undefined;
   blockNumber: string | undefined;
   tokenId: string | number;
+  isMarket: boolean;
   contractType: EvmNftContractType;
-  isMarket: any;
   tokenUri?: string | undefined;
   tokenHash?: string | undefined;
   metadata: MoralisDataObjectValue;
@@ -23,4 +23,5 @@ export type TNFTBalance = {
 
 export interface INFTBalances {
   balances?: TNFTBalance[];
+  isMarket: boolean;
 }
